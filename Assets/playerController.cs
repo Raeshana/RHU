@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour
     {
         if (_moveDirection != 0f)
         {
-            _rb.velocity = new Vector2(_moveDirection * _moveSpeed, rb.velocity.y);
+            _rb.velocity = new Vector2(_moveDirection * _moveSpeed, _rb.velocity.y);
         }
     }
 }
