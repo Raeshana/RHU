@@ -443,15 +443,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06e25fa11853df40adcb72d5ccb44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 8
+  _sr: {fileID: 1528592203}
+  _moveSpeed: 5
   _groundCheck: {fileID: 1175429880}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _jumpSpeed: 10
+  _jumpSpeed: 15
   _maxFallSpeed: 5
-  _coyoteTime: 0.1
-  _jumpBufferTime: 0.1
+  _coyoteTime: 0.2
+  _jumpBufferTime: 0.2
+  _thrustSpeed: 10
+  _thrustTime: 0.2
+  _thrustCooldown: 0.5
 --- !u!50 &1528592202
 Rigidbody2D:
   serializedVersion: 4
