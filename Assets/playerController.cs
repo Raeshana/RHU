@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class playerController : MonoBehaviour
     public float _thrustTime = 0.2f;
     public float _thrustCooldown = 0.5f;
 
+    // Death
+    private bool _isDying = false;
+
+    [SerializeField] private Transform _deathCheck; // isGrounded capsule overlay
+    [SerializeField] private LayerMask _deathLayer; // Ground Layer
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +57,7 @@ public class playerController : MonoBehaviour
 
         Jump();
         ThrustFn();
+        Death();
     }
 
     void FixedUpdate()
@@ -80,7 +88,7 @@ public class playerController : MonoBehaviour
     }
 
     private void Jump() {      
-        _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(0.4f, 0.08f), CapsuleDirection2D.Horizontal, 0f, _groundLayer);
+        _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(0.5f, 0.1f), CapsuleDirection2D.Horizontal, 0f, _groundLayer);
 
         if (_isGrounded && !Input.GetButton("Jump")) {
             _doubleJump = false;
@@ -148,6 +156,16 @@ public class playerController : MonoBehaviour
         // dash cooldown
         yield return new WaitForSeconds(_thrustCooldown);
         _canThrust = true;
+    }
+
+    public void Death()
+    {
+        _isDying = Physics2D.OverlapCapsule(_deathCheck.position, new Vector2(0.5f, 0.1f), CapsuleDirection2D.Horizontal, 0f, _deathLayer);
+        
+        if (_isDying)
+        {
+            SceneManager.LoadScene("DeathMenu");
+        }
     }
 
     public void EndFall()

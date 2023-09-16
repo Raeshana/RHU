@@ -25,28 +25,9 @@ public class disappearingPlatform : MonoBehaviour
     {
         
     }
-    IEnumerator FadeOut() 
-    {
-       
-        for (float f = 1f; f>=-0.5f; f-=0.05f){
-            Color c = rend.material.color;
-            c.a = f;
-            rend.material.color = c;
-            yield return new WaitForSeconds(0.05f);
-        }
-    }
-
-    IEnumerator FadeIn() 
-    {
-       for (float f = 0f; f<=1f; f+=0.05f){
-            Color c = rend.material.color;
-            c.a = f;
-            rend.material.color = c;
-            yield return new WaitForSeconds(0.05f);
-        } 
-    }
+    
     IEnumerator startFading(){
-        for (float f = 1f; f>=-0.5f; f-=0.05f){
+        for (float f = 1f; f>=0f; f-=0.05f){
             Color c = rend.material.color;
             c.a = f;
             rend.material.color = c;
