@@ -17,6 +17,6 @@ public class MainMenu : MonoBehaviour
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene("MovingPlatformScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
